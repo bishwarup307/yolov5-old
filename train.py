@@ -21,9 +21,9 @@ except:
     mixed_precision = False  # not installed
 
 # Hyperparameters
-hyp = {'optimizer': 'SGD',  # ['adam', 'SGD', None] if none, default is SGD
-       'lr0': 0.01,  # initial learning rate (SGD=1E-2, Adam=1E-3)
-       'momentum': 0.937,  # SGD momentum/Adam beta1
+hyp = {'optimizer': 'adam',  # ['adam', 'SGD', None] if none, default is SGD
+       'lr0': 0.001,  # initial learning rate (SGD=1E-2, Adam=1E-3)
+       'momentum': 0.9,#37,  # SGD momentum/Adam beta1
        'weight_decay': 5e-4,  # optimizer weight decay
        'giou': 0.05,  # giou loss gain
        'cls': 0.58,  # cls loss gain
@@ -36,9 +36,9 @@ hyp = {'optimizer': 'SGD',  # ['adam', 'SGD', None] if none, default is SGD
        'hsv_h': 0.014,  # image HSV-Hue augmentation (fraction)
        'hsv_s': 0.68,  # image HSV-Saturation augmentation (fraction)
        'hsv_v': 0.36,  # image HSV-Value augmentation (fraction)
-       'degrees': 0.0,  # image rotation (+/- deg)
+       'degrees': 0.2,  # image rotation (+/- deg)
        'translate': 0.0,  # image translation (+/- fraction)
-       'scale': 0.5,  # image scale (+/- gain)
+       'scale': 0.2,  # image scale (+/- gain)
        'shear': 0.0}  # image shear (+/- deg)
 
 
