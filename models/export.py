@@ -14,6 +14,7 @@ if __name__ == '__main__':
     parser.add_argument('--weights', type=str, default='./yolov5s.pt', help='weights path')
     parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='image size')
     parser.add_argument('--batch-size', type=int, default=1, help='batch size')
+    parser.add_argument('--detect-layer', type = bool, default=False, help = 'whether to export the last detect layer')
     opt = parser.parse_args()
     opt.img_size *= 2 if len(opt.img_size) == 1 else 1  # expand
     print(opt)
@@ -25,7 +26,7 @@ if __name__ == '__main__':
     google_utils.attempt_download(opt.weights)
     model = torch.load(opt.weights, map_location=torch.device('cpu'))['model'].float()
     model.eval()
-    model.model[-1].export = True  # set Detect() layer export=True
+    model.model[-1].export = opt.detect_layer  # set Detect() layer export=True
     y = model(img)  # dry run
 
     # TorchScript export

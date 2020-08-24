@@ -109,12 +109,12 @@ def predict(
     print("loading model...")
     model = attempt_load(weights, map_location=device)
     model.eval()
-    print(type(model))
+    # print(type(model))
 
     predictions = []
     for batch in tqdm(loader):
         batch = batch.to(device)
-        print(batch.size())
+        # print(batch.size())
         with torch.no_grad():
             pred = model(batch, augment=False)[0]
         pred = non_max_suppression(pred, confidence, nms_threshold, classes=None, agnostic=False)
